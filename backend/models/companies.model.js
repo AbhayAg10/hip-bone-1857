@@ -27,25 +27,17 @@ const companySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  reviewsCount: [
-    {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-  ],
-  about: {
-    type: String,
-    required: true,
+  reviewsCount: {
+    type: Number,
+    default: 0,
   },
-  headquarter: {
+  about: {
     type: String,
     required: true,
   },
   founded: {
     type: Date,
     default: Date.now,
-    required: true,
   },
   companysize: {
     type: Number,
@@ -53,7 +45,6 @@ const companySchema = new mongoose.Schema({
   },
   website: {
     type: String,
-    required: true,
   },
 });
 
