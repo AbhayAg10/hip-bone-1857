@@ -43,6 +43,9 @@ const jobSchema = new mongoose.Schema({
   keySkills: {
     type: String,
   },
+  website: {
+    type: String,
+  },
 });
 
 const Job = mongoose.model("Job", jobSchema);

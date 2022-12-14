@@ -12,6 +12,19 @@ const getCompanies = asyncHandler(async (req, res) => {
   res.status(200).json(companies);
 });
 
+const createCompany = asyncHandler(async (req, res) => {
+  const company = new Company(req.body);
+  company.save((err, company) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json(err.message);
+    } else {
+      res.status(201).json(company);
+    }
+  });
+});
+
 module.exports = {
   getCompanies,
+  createCompany,
 };

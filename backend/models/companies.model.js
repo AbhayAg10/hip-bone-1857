@@ -9,23 +9,20 @@ const companySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  industry: {
-    type: String,
-    required: true,
-  },
+  industry: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   rating: {
     type: Number,
     default: 0,
     required: true,
   },
-  tags: [
-    {
-      type: String,
-    },
-  ],
   logo: {
     type: String,
-    required: true,
+    default: "https://img.naukimg.com/logo_images/groups/v1/233602.gif",
   },
   reviewsCount: {
     type: Number,
@@ -35,16 +32,9 @@ const companySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  founded: {
-    type: Date,
-    default: Date.now,
-  },
   companysize: {
     type: Number,
     required: true,
-  },
-  website: {
-    type: String,
   },
 });
 
