@@ -16,8 +16,8 @@ const CompaniesContainer = () => {
 
   console.log(companies);
   return (
-    <VStack>
-      <Heading size={"sm"} opacity={0.9} fontWeight={"medium"}>
+    <VStack align={"flex-start"} m={2} p={2}>
+      <Heading size={"sm"} opacity={0.9} fontWeight={"medium"} mb={4}>
         Showing {companies.length} Companies:
       </Heading>
       <SimpleGrid columns={2} spacing={5}>
