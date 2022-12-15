@@ -6,6 +6,7 @@ const userRoutes=require("./routes/userRoutes");
 const cors=require("cors")
 
 const { notFound, errorHandler } = require("./MiddleWares/errorMiddleWare");
+const companies = require("./routes/companies.routes");
 
 const app=express();
 app.use(express.json())
@@ -17,6 +18,7 @@ app.get("/",(req,res)=>{
 })
 const PORT=8084;
 app.use("/api/users",userRoutes)
+app.use("/api/companies", companies);
 
 
 authConnection();
