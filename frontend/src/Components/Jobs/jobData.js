@@ -1,0 +1,92 @@
+export default [
+     {
+        id:1,
+        title:"Performance Test Engineer",
+        subtitle:"Tata Consultanc Services(TCS)",
+        rate:3.9,
+        exp:"3-4",
+        pay:900000,
+        type:"Hybrid",
+        timetopost:"Few Hours Ago",
+        blanksheet:15,
+        Role:"backend Developer",
+        skill:"Eclipse, IntelliJ, APM Tools Dynatrace, JVisual VM, JMH",
+        location:"Pan India",
+        industry:"IT Services & Consulting"
+
+    },{
+        id:2,
+        title:"ETL/DataStage Developer",
+        subtitle:"Tata Consultancy Services",
+        rate:4,
+        exp:"3-5",
+        pay:500000,
+        type:"Hybrid",
+        timetopost:"Few Hours Ago",
+        blanksheet:22,
+	    Role:"ETL/DataStage Developer",
+        skill:"Analyzer, SQL, UNIX/LINUX.",
+        location:"Chennai/Hyderabad",
+        industry:"IT Services & Consulting"
+    },
+    {
+        id:3,
+        title:"Azure Data Factory",
+        subtitle:"Tata Consultancy Services",
+        rate:4,
+        exp:"3-6",
+        pay:500000,
+        type:"work from home",
+        timetopost:"Few Hours Ago",
+        blanksheet:96,
+	    Role:"Software Development - Other",
+        skill:"Software Development",
+        location:"Maharashtra, India",
+        industry:"IT Services & Consulting"
+    },
+    {
+        id:4,
+        title:"Big Data Developer",
+        subtitle:"Tata Consultancy Services",
+        rate:3,
+        exp:"3-4",
+        pay:500000,
+        type:"Hybrid",
+        timetopost:"Few Hours Ago",
+        blanksheet:15,
+        Role:"backend Developer",
+        skill:"Eclipse, IntelliJ, APM Tools Dynatrace, JVisual VM, JMH",
+        location:"Pan India",
+        industry:"IT Services & Consulting"
+    },
+    {
+        id:5,
+        title:"Java Full Stack Developer",
+        subtitle:"Tata Consultancy Services",
+        rate:4,
+        exp:"2-4",
+        pay:600000,
+        type:"hybrid",
+        timetopost:"Few Hours Ago",
+        blanksheet:15,
+        Role:"Java Full Stack Developer",
+        skill:"Java angular js javascript  mongoose react js",
+        location:"",
+        industry:"IT Services & Consulting"
+    },
+    {
+        id:6,
+        title:"SAP BASIS/ HANA- CLOUD- Remote working- HCL- PAN INDIA",
+        subtitle:"HCL tech",
+        rate:3.8,
+        exp:"5-10",
+        pay:1000000,
+        type:"Permanent remote / WFH",
+        timetopost:"Few day Ago",
+        blanksheet:10,
+        skill:"SAP Basis, SAP HANA and S/4 HANA skills,",
+        location:"delhi",
+        industry:"HCL"
+    }
+  ];
+  
