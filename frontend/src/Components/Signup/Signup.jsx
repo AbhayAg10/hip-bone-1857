@@ -213,14 +213,15 @@ const SignUp = () => {
           </div>
         </Box1>
         <Box elevation={5}>
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+          {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+          {loading && <Loading />}
           <Grid>
             <Header style={{ marginLeft: "1%" }}>
               Find a job & grow your career
             </Header>
           </Grid>
-          {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-          {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
-          {loading && <Loading />}
+         
           <Container onSubmit={handleSubmit}>
             <TextField
               style={{ width: "70%", marginLeft: "-20%" }}

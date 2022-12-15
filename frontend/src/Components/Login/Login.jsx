@@ -124,6 +124,9 @@ const Login = () => {
     }
   };
   return (
+    // {loading && <Loading />}
+    // {error && <ErrorMessage>{error}</ErrorMessage>}
+    
     <Main align="center">
       <Box1 elevation={4}>
         <Header1>New to Naukri?</Header1>
@@ -157,14 +160,13 @@ const Login = () => {
           alt=""
         />
       </Box1>
-
+      
       <Box elevation={5}>
         <Grid>
           <Header>Login</Header>
         </Grid>
 
-        {loading && <Loading />}
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+       
         <Container onSubmit={submitHandler}>
           <FormControl>
             <TextField
