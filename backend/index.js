@@ -1,11 +1,30 @@
-const express = require("express");
+const express=require("express");
+const dotenv=require("dotenv").config();
+const bodyParser=require("body-parser");
+const authConnection = require("./dataBase/db");
+const userRoutes=require("./routes/userRoutes");
+const cors=require("cors")
 
-const app = express();
+const { notFound, errorHandler } = require("./MiddleWares/errorMiddleWare");
+const companies = require("./routes/companies.routes");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+const app=express();
+app.use(express.json())
+app.use(bodyParser.json())
+app.use(cors())
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("🚀🚀🚀Server listening on port 3000");
-});
+app.get("/",(req,res)=>{
+    res.send("FROM HOME")
+})
+const PORT=8084;
+app.use("/api/users",userRoutes)
+app.use("/api/companies", companies);
+
+
+authConnection();
+
+app.use(notFound)
+app.use(errorHandler)
+app.listen(PORT,()=>{
+    console.log(`Server Runnig On http://localhost:${PORT}`)
+})

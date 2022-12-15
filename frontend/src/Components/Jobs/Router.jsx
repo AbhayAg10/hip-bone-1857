@@ -7,13 +7,14 @@ const Router = () => {
   return (
    
     <div>
-         <nav>
+         {/* <nav>
     <Link to="/">Home</Link>
     <Link to="/jobpage">Products</Link>
-  </nav>
+  </nav> */}
         <Routes>
             <Route path='/jobpage' element={<JobPage/>}>JobPage</Route>
-            <Route path='/jobdpage/:jobId' element={<JobDetail/>}>JobPage</Route>
+            <Route path='/jobpage/:jobId' element={<JobDetail/>}>JobPage</Route>
+          
         </Routes>
 
        

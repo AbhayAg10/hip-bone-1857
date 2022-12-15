@@ -1,27 +1,27 @@
-import { Box } from '@chakra-ui/react'
-import React from 'react'
-import jobDiscription from './jobDiscription';
+import React from "react";
 import { Link } from "react-router-dom";
 
+import jobData from "./jobData";
 
 const JobPage = () => {
-  // const products = jobDiscription.map(product => {
-  //   return (
-  //     <div key={product.id}>
-  //       <h3>
-  //         <Link to={`/products/${product.id}`}>{product.name}</Link>
-  //       </h3>
-  //       <p>Price: ${product.price}</p>
-  //       <hr />
-  //     </div>
-  //   );
-  // });
+  const jobdatas = jobData.map(job => {
+    return (
+      <div key={job.id}>
+        <h3>
+          <Link to={`/jobpage/${job.id}`}>{job.title}</Link>
+        </h3>
+        <p>Price: ${job.pay}</p>
+        <hr />
+      </div>
+    );
+  });
+
   return (
-    <Box w='100%' display={['flex']} justifyContent='space-between'>
-        hello abhya
+    <>
+      <h1>Job</h1>
+      {jobdatas}
+    </>
+  );
+};
 
-    </Box>
-  )
-}
-
-export default JobPage
+export default JobPage;
