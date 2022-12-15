@@ -1,6 +1,4 @@
-function App() {
-  return (
-    <div>
+
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
