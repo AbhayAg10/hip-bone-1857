@@ -1,13 +1,15 @@
-import { Heading, HStack, VStack } from "@chakra-ui/react";
+import { Heading, HStack, SlideFade, VStack } from "@chakra-ui/react";
 import React from "react";
 import CompaniesContainer from "./CompaniesContainer";
 import FiltersContainer from "./FiltersContainer";
 
 const Companies = () => (
   <VStack>
-    <Heading size={"lg"} m={"6"}>
-      Top companies hiring now
-    </Heading>
+    <SlideFade in={true} offsetY={20}>
+      <Heading size={"lg"} m={"6"}>
+        Top companies hiring now
+      </Heading>
+    </SlideFade>
     <HStack>
       {/* <FiltersContainer /> */}
       <CompaniesContainer />
