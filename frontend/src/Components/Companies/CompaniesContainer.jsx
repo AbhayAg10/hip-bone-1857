@@ -1,4 +1,4 @@
-import { Heading, VStack } from "@chakra-ui/react";
+import { Heading, SimpleGrid, VStack } from "@chakra-ui/react";
 import React from "react";
 import CompaniesCard from "./CompaniesCard";
 
@@ -17,10 +17,14 @@ const CompaniesContainer = () => {
   console.log(companies);
   return (
     <VStack>
-      <Heading>Showing Companies</Heading>
-      {companies.map((company) => (
-        <CompaniesCard {...company} />
-      ))}
+      <Heading size={"sm"} opacity={0.9} fontWeight={"medium"}>
+        Showing {companies.length} Companies:
+      </Heading>
+      <SimpleGrid columns={2} spacing={5}>
+        {companies.map((company) => (
+          <CompaniesCard key={company._id} {...company} />
+        ))}
+      </SimpleGrid>
     </VStack>
   );
 };
