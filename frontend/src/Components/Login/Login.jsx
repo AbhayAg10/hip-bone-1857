@@ -1,24 +1,10 @@
 import React, { useState } from "react";
-import {
-  Avatar,
-  Grid,
-  Paper,
-  Typography,
-  FormControl,
-  FormGroup,
-  OutlinedInput,
-  InputLabel,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  FormHelperText,
-  Input,
-} from "@mui/material";
+import {  Grid, Paper, FormControl, Button } from "@mui/material";
 import { styled } from "@mui/material";
 
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-import GoogleIcon from "@mui/icons-material/Google";
+
 import DoneIcon from "@mui/icons-material/Done";
 import axios from "axios";
 import Loading from "./Loading";
@@ -76,9 +62,7 @@ const Header3 = styled("p")`
   font-size: 15px;
   margin-top: -1%;
 `;
-const AvatartStle = styled(Avatar)`
-  background: #1bbd7e;
-`;
+
 const Container = styled("form")`
   width: 100%;
   margin: 1% auto 0 auto;
