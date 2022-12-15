@@ -1,8 +1,4 @@
 import React from 'react'
-import {Box, Button, Container, Divider, Flex, Image, Menu, MenuButton, MenuItem, MenuList, Stack, useDisclosure} from '@chakra-ui/react';
-import mainlogo from '../../Components/req/jobpandacom-logo.png'
-import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
