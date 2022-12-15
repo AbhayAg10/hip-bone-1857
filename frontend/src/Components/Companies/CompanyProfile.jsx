@@ -6,10 +6,12 @@ import {
   Center,
   Heading,
   HStack,
+  SimpleGrid,
   Slide,
   SlideFade,
   Spinner,
   Stack,
+  Text,
   VStack,
   Wrap,
   WrapItem,
@@ -40,8 +42,8 @@ const CompanyProfile = () => {
     );
   } else {
     return (
-      <Center h={"full"} w={"full"}>
-        <VStack mt={"12"}>
+      <Center h={"full"} w={"80vw"} margin={"auto"}>
+        <VStack my={"12"}>
           <SlideFade in={true} offsetY={20}>
             <HStack gap={6}>
               <SlideFade in={true} offsetY={-40}>
@@ -61,8 +63,9 @@ const CompanyProfile = () => {
                     <WrapItem
                       borderColor={"gray.200"}
                       borderWidth={"1px"}
-                      borderRadius={"md"}
-                      px={2}
+                      borderRadius={"xl"}
+                      px={3}
+                      py={1}
                       fontSize={"sm"}
                       opacity={0.8}
                     >
@@ -71,7 +74,26 @@ const CompanyProfile = () => {
                   ))}
                 </Wrap>
               </VStack>
+              {/* About */}
             </HStack>
+            <VStack align={"flex-start"} mt={10}>
+              <Heading fontSize={"2xl"} fontWeight={"semibold"}>
+                About {data.name}
+              </Heading>
+              <Text align={"justify"} opacity={0.9}>
+                {data.about}
+              </Text>
+              <Heading fontSize={"2xl"} fontWeight={"semibold"}>
+                More Information
+              </Heading>
+              <VStack align={"flex-start"}>
+                <Text align={"justify"}>Location: {data.location}</Text>
+                <Text align={"justify"}>
+                  Company Size: {">"}
+                  {data.companysize}
+                </Text>
+              </VStack>
+            </VStack>
           </SlideFade>
         </VStack>
       </Center>
@@ -81,23 +103,3 @@ const CompanyProfile = () => {
 
 export default CompanyProfile;
 
-// {
-//     "_id": "639a069956f8673e46cf5c7e",
-//     "name": "OMICS International",
-//     "location": "Online",
-//     "industry": [
-//         "Printing & Publishing",
-//         "Advertising / PR / Events",
-//         "Private",
-//         "Indian MNC",
-//         "B2C",
-//         "B2B",
-//         "Conglomerate"
-//     ],
-//     "rating": 2.5,
-//     "logo": "https://img.naukimg.com/logo_images/groups/v1/1424980.gif",
-//     "reviewsCount": 5,
-//     "about": "We are a group of publications including iMedPub LTD and Conference Series LLC LTD. We Organize 3000+ Conferences across USA, Europe & Asia with support from 1000 more scientific societies and Publishes 700+ Open Access Journals which contains over 50000 eminent personalities, reputed scientists as editorial board members.\nWe are an organization that amalgamates Open Access Publications and International science events for the benefit of the global scientific community. The organization was established in the year 2007 with the sole aim of providing a platform for 'Open Access' to the research information pertaining to diversified fields of Science and technology. We publishe scholarly journals that can be easily accessed online without paying any subscription charges. Our organization plays an instrumental role in expanding the reach of research data in the real time, which in turn helps in furthering the research. Research Scholars, Students, Libraries, Educational Institutions, Research centers and industries are the main stakeholders that are benefitted from open access to research data. We also organize 3000+ International conferences across the globe, where knowledge transfer takes place through debates, round table discussions, poster presentations, workshops, symposia and exhibitions.",
-//     "companysize": 5000,
-//     "__v": 0
-// }
