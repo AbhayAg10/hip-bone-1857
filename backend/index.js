@@ -1,12 +1,12 @@
 const express=require("express");
-const dotenv=require("dotenv").config();
 const bodyParser=require("body-parser");
-const authConnection = require("./dataBase/db");
-const userRoutes=require("./routes/userRoutes");
 const cors=require("cors")
 
 const { notFound, errorHandler } = require("./MiddleWares/errorMiddleWare");
 const companies = require("./routes/companies.routes");
+const authConnection = require("./dataBase/db");
+const userRoutes=require("./routes/userRoutes");
+require("dotenv").config();
 
 const app=express();
 app.use(express.json())
