@@ -6,7 +6,7 @@ import FiltersContainer from "./FiltersContainer";
 const Companies = () => (
   <VStack>
     <SlideFade in={true} offsetY={20}>
-      <Heading size={"lg"} m={"6"}>
+      <Heading size={"lg"} m={"6"} mt={24}>
         Top companies hiring now
       </Heading>
     </SlideFade>
