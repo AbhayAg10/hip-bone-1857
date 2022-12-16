@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useSearchParams } from "react-router-dom";
 import {
   Avatar,
+  Box,
   Center,
   Heading,
   HStack,
@@ -16,6 +17,9 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
+// import * as dotenv from "dotenv";
+// dotenv.config();
 
 const CompanyProfile = () => {
   const { id } = useParams();
@@ -86,7 +90,22 @@ const CompanyProfile = () => {
               <Heading fontSize={"2xl"} fontWeight={"semibold"}>
                 More Information
               </Heading>
-              <VStack align={"flex-start"}>
+              <VStack align={"flex-start"} opacity={0.9}>
+                <HStack>
+                  <Text align={"justify"}>Rating: </Text>
+                  <Box display='flex' alignItems='center'>
+                    {Array(5)
+                      .fill("")
+                      .map((_, i) => (
+                        <StarIcon
+                          boxSize={"3"}
+                          key={i}
+                          color={i < data.rating ? "gold" : "gray.300"}
+                        />
+                      ))}
+                  </Box>
+                  <Text>{`(${data.rating}/5)`}</Text>
+                </HStack>
                 <Text align={"justify"}>Location: {data.location}</Text>
                 <Text align={"justify"}>
                   Company Size: {">"}
