@@ -1,4 +1,7 @@
 import React from 'react'
+import {Box, Button, Container, Divider, Flex, Image, Menu, MenuButton, MenuItem, MenuList, Stack, useDisclosure} from '@chakra-ui/react';
+import mainlogo from '../../Components/req/jobpandacom-logo.png'
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -58,8 +61,7 @@ const Navbar = () => {
             color={"#445578"}
             cursor={"pointer"}
           >
-            <Link to='/jobpage' > Jobs</Link>
-           
+            Jobs
           </Box>
           <Box
             // border={"1px"}

@@ -1,17 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import JobPage from './Components/Jobs/JobPage';
-import Router from './Components/Jobs/Router';
-import Navbar from './Components/Navbar/Navbar';
-
+import "./App.css";
+import Navbar from "./Components/Navbar/Navbar";
+import AllRoutes from "./Routes/AllRoutes";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Router/>
-     
-    </div>
+    <Provider store={store}>
+      <div className='App'>
+        <Navbar />
+        <AllRoutes />
+      </div>
+    </Provider>
   );
 }
 

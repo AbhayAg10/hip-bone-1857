@@ -12,6 +12,12 @@ const getCompanies = asyncHandler(async (req, res) => {
   res.status(200).json(companies);
 });
 
+const getCompany = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const company = await Company.findById(id).exec();
+  res.status(200).json(company);
+});
+
 const createCompany = asyncHandler(async (req, res) => {
   const company = new Company(req.body);
   company.save((err, company) => {
@@ -27,4 +33,5 @@ const createCompany = asyncHandler(async (req, res) => {
 module.exports = {
   getCompanies,
   createCompany,
+  getCompany,
 };
