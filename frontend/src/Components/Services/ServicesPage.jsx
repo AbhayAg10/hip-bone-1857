@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Text, Stack, Image, Button, HStack, FormControl, FormLabel, Input, Textarea } from '@chakra-ui/react';
+import { Flex, Text, Stack, Image, Button, HStack, SimpleGrid, FormControl, FormLabel, Input, Textarea, Spacer } from '@chakra-ui/react';
 import ServicesNavbar from './comps/ServicesNavbar';
 import TopThreeBox from './comps/TopThreeBox';
 
@@ -65,7 +65,7 @@ const ServicesPage = () => {
         </Flex>
 
         <Flex w='100%' bgColor='blackAlpha.200'>
-            <Stack border='1px solid black' w={['63%']} m='auto' h='100%' spacing={['1rem']}>
+            <Stack w={['63%']} m='auto' h='100%' spacing={['1rem']}>
 
                 <Flex mt={['1.3rem']} w='100%' h={['30vh']} gap={['1rem']} alignItems='center'>
                     <Flex w={['40vw']} bgColor='white' h='100%' gap={['1rem']}>
@@ -159,10 +159,81 @@ const ServicesPage = () => {
                         <Button w={['80%']} color='white' bgColor='blue.400' borderRadius='none'>CALL ME BACK</Button>
                     </Flex>
                 </Flex>
+                <Spacer></Spacer>
 
             </Stack>
         </Flex>
 
+        <Flex direction='column'>
+            <Flex h={['9vh']} justifyContent='center' alignItems='center'>
+                <Flex w={['18vw']}>
+                    <Text color='gray' fontSize={['.9rem']}>Buy Safely with Naukri.com we support secure payment methods</Text>
+                </Flex>
+                <Image src='https://static.naukimg.com/s/7/123/i/paymentSprite_v1.png' />
+            </Flex>
+
+            <Flex w='100%' h={['35vh']} bgColor='blackAlpha.800' justifyContent='center' alignItems='center'>
+                <SimpleGrid w={['63%']} columns={['5']} color='gray.200' fontSize={['.8rem']}>
+
+                    <Stack>
+                        <Text>Text Resume</Text>
+                        <Text>Visual Resume</Text>
+                        <Text>Resume Critique</Text>
+                        <Text>Resume Quality Score</Text>
+                        <Text>Resume Samples</Text>
+                        <Text>Cover Letter Samples</Text>
+                        <Text>Job Letter Samples</Text>
+                    </Stack>
+
+                    <Stack>
+                        <Text>Resume Display</Text>
+                        <Text>Recruiter Connection</Text>
+                        <Text>Priority Applicant</Text>
+                        <Text>Certification Highlighter</Text>
+                    </Stack>
+
+                    <Stack>
+                        <Text>Enhance Profile</Text>
+                        <Text>Learning & Certifications</Text>
+                        <Text>Online Aptitude Test</Text>
+                        <Text>Certification Highlighter</Text>
+                    </Stack>
+
+                    <Stack>
+                        <Text>Find Jobs</Text>
+                        <Text>Jobs4U</Text>
+                        <Text>Combo Packs</Text>
+                    </Stack>
+
+                    <Stack>
+                        <Text>Provide your feedback</Text>
+                        <Text>Sitemap</Text>
+                        <Text>Customer Support service</Text>
+                        <Text>Fastforward Outbound Numbers</Text>
+                    </Stack>
+
+                </SimpleGrid>
+            </Flex>
+
+            <Flex w='100%' h={['40vh']} justifyContent='center' alignItems='center' direction='column'>
+                <Stack w={['63%']} fontSize={['.8rem']}>
+                    <Text>Disclaimer</Text>
+                    <Text>While Naukri FastForward services have helped many customers over the years, we do not guarantee any interview calls or assure any job offers with any of our services.
+                        The services associated with NaukriFastforward are only provided through the website Naukri.com. You are advised to be cautious of calls/emails asking for payment from other web sites that claim to offer similar services under the name of Naukri.com. We have no associates/agents other than the partner sites that have been specifically named on the homepage of the website Naukri.com. We also recommend that you visit Terms and Conditions and Privacy Policy
+                        Naukri FastForward may also contact the User through SMS, internet-based messaging applications like WhatsApp, voice call, e-mail for any pending or failed transactions, to assist user in concluding the purchase of Naukri FastForward services. The User hereby unconditionally consents that such communications via SMS, internet-based messaging applications like WhatsApp, voice call, email or any other mode by Naukri FastForward are:
+                        1 upon the request and authorization of the User;
+                        2 'transactional' and not an 'unsolicited commercial communication' as per the guidelines of Telecom Regulation Authority of India (TRAI), and
+                        3 in compliance with the relevant guidelines of TRAI or such other authority in India and abroad.
+                        The User will indemnify Naukri FastForward against all types of losses and damages incurred by Naukri FastForward due to any action taken by TRAI, Access Providers (as per TRAI regulations) or any other authority due to any erroneous complaint raised by the User on Naukri FastForward with respect to the communications mentioned above or due to a wrong number or email id being provided by the User for any reason whatsoever.</Text>
+                </Stack>
+            </Flex>
+
+
+            <Flex bgColor='blackAlpha.300' h={['7vh']} justifyContent='center' alignItems='center'>
+                <Text color='black' fontSize={['.9rem']}>All rights reserved @ 2022 Info Edge (India) Ltd.</Text>
+            </Flex>
+
+        </Flex>
     </>
 }
 
