@@ -1,17 +1,22 @@
 import React from 'react'
-import {Box, Button, Container, Divider, Flex, Image, Menu, MenuButton, MenuItem, MenuList, Stack, useDisclosure} from '@chakra-ui/react';
+import {Box, Button, Container, Divider, Flex, Heading, Image, Menu, MenuButton, MenuItem, MenuList, Stack, Text, textDecoration, useDisclosure} from '@chakra-ui/react';
 import mainlogo from '../../Components/req/jobpandacom-logo.png'
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 
 const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const {isOpen, onOpen, onClose} = useDisclosure()
+  const employers = useDisclosure()
+  const jobs = useDisclosure()
+  const companies = useDisclosure()
+  const services = useDisclosure()
 
   return (
     <Container
       maxW={"100%"}
       h={"72px"}
-      border={"1px"}
-      borderColor={"black"}
+      // border={"1px"}
+      // borderColor={"black"}
+      position={"fixed"}
     >
       <Flex
         direction={"row"}
@@ -61,7 +66,73 @@ const Navbar = () => {
             color={"#445578"}
             cursor={"pointer"}
           >
-            Jobs
+            <Menu isOpen={jobs.isOpen}>
+            <MenuButton
+              _hover={{
+                background: "none",
+                border: "none",
+                textDecoration : "none"
+              }}
+              border={"none"}
+              bgColor={"white"}
+              as={Button} 
+              onMouseEnter={jobs.onOpen}
+              onMouseLeave={jobs.onClose}
+              color={"#445578"}
+            >
+              Jobs 
+            </MenuButton>
+            <MenuList onMouseEnter={jobs.onOpen} onMouseLeave={jobs.onClose}>
+              <MenuItem
+                fontWeight={"600"}
+                fontSize={"17px"}
+                color={"#1b2437"}
+                cursor={"default"}
+              >Popular Categories</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >IT jobs</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Sales jobs</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Marketing jobs</MenuItem>              
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Data Science jobs</MenuItem>              
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >HR jobs</MenuItem>              
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Engineering jobs</MenuItem>              
+            </MenuList>
+          </Menu>
           </Box>
           <Box
             // border={"1px"}
@@ -76,7 +147,66 @@ const Navbar = () => {
             color={"#445578"}
             cursor={"pointer"}
           >
-            Companies
+            <Menu isOpen={companies.isOpen}>
+            <MenuButton
+              _hover={{
+                background: "white",
+                border: "none"
+              }}
+              p={"0px"}
+              border={"none"}
+              bgColor={"white"}
+              as={Button} 
+              onMouseEnter={companies.onOpen}
+              onMouseLeave={companies.onClose}
+              color={"#445578"}
+            >
+              Companies 
+            </MenuButton>
+            <MenuList onMouseEnter={companies.onOpen} onMouseLeave={companies.onClose}>
+              <MenuItem
+                fontWeight={"600"}
+                fontSize={"17px"}
+                color={"#1b2437"}
+                cursor={"default"}
+              >Explore Categories</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Unicorn</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >MNC</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Startup</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Product Based</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Internet</MenuItem>
+            </MenuList>
+          </Menu>
           </Box>
           <Box
             // border={"1px"}
@@ -91,7 +221,79 @@ const Navbar = () => {
             color={"#445578"}
             cursor={"pointer"}
           >
-            Services
+            <Menu isOpen={services.isOpen}>
+            <MenuButton
+              _hover={{
+                background: "white",
+                border: "none"
+              }}
+              border={"none"}
+              bgColor={"white"}
+              as={Button} 
+              onMouseEnter={services.onOpen}
+              onMouseLeave={services.onClose}
+              color={"#445578"}
+            >
+              Services 
+            </MenuButton>
+            <MenuList onMouseEnter={services.onOpen} onMouseLeave={services.onClose}>
+              <MenuItem
+                fontWeight={"600"}
+                fontSize={"17px"}
+                color={"#1b2437"}
+                cursor={"default"}
+              >Resume Writing</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Visual Resume</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Resume critique</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Text Resume</MenuItem>
+              <br />
+              <MenuItem
+                fontWeight={"600"}
+                fontSize={"17px"}
+                color={"#1b2437"}
+                cursor={"default"}
+              >Find Jobs</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Jobs4u</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Priority applicant</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Contact us</MenuItem>              
+            </MenuList>
+          </Menu>
           </Box>
         </Stack>
         <Stack
@@ -128,7 +330,7 @@ const Navbar = () => {
             Register
           </Button>
           <Divider borderColor={"#445578"} orientation='vertical' h={"30%"} />
-          <Menu isOpen={isOpen}>
+          <Menu isOpen={employers.isOpen}>
             <MenuButton
               _hover={{
                 background: "white",
@@ -138,16 +340,34 @@ const Navbar = () => {
               bgColor={"white"}
               as={Button} 
               rightIcon={<ChevronDownIcon />}
-              onMouseEnter={onOpen}
-              onMouseLeave={onClose}
+              onMouseEnter={employers.onOpen}
+              onMouseLeave={employers.onClose}
               color={"#445578"}
             >
               For employers 
             </MenuButton>
-            <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
-              <MenuItem>Buy online</MenuItem>
-              <MenuItem>Hiring solutions</MenuItem>
-              <MenuItem>Employer Login</MenuItem>              
+            <MenuList onMouseEnter={employers.onOpen} onMouseLeave={employers.onClose}>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Buy online</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Hiring solutions</MenuItem>
+              <MenuItem
+                _hover={{
+                  color : "#457eff"
+                }}
+                fontWeight={"500"}
+                color={"#445578"} 
+              >Employer Login</MenuItem>              
             </MenuList>
           </Menu>
         </Stack>
