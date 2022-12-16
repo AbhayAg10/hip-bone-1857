@@ -1,70 +1,118 @@
 import React, { useState } from "react";
-import { Grid, Paper, Button, Checkbox, FormControlLabel } from "@mui/material";
-import Form from "react-bootstrap/Form";
-
-import { styled } from "@mui/material";
-
-import TextField from "@mui/material/TextField";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
-// import { useNavigate } from "react-router-dom";
-import ErrorMessage from "./ErrorMessage";
+import FormHelperText from "@mui/material/FormHelperText";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
+import BadgeIcon from "@mui/icons-material/Badge";
+import { Checkbox } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import Loading from "./Loading";
-const Main = styled(Grid)`
-  display: flex;
-  background-color: #fafbfe;
-  width: 90%;
-  margin: auto;
-  margin-top: 1%;
-`;
-const Box = styled(Paper)`
-  padding: 30px 20px;
-  width: 800px;
-  height: 1190px;
-  margin-top: 30px;
-  margin-left: 8%;
-  opacity: 0.9, 0.8, 0.7;
-  border-radius: 2%;
-`;
-const Box1 = styled(Paper)`
-  width: 300px;
-  height: 280px;
-  margin-top: 17%;
-  margin-left: 3%;
-  postion: sticky;
-  border: 1px dashed grey;
-  opacity: 0.9, 0.8, 0.7;
-  border-radius: 5%;
-  postion: fixed;
-  top: 10%;
-  z-index: 1;
-  background-color: "#fff";
-`;
-const Header = styled("h2")`
-  margin-left: -40%;
-  font-size: 35px;
-  line-height: 28px;
-  font-family: Roboto Slab;
-`;
+import Form from "react-bootstrap/Form";
+import "./Both.css";
+const Signup = () => {
+  const [passShow, setPassShow] = useState(false);
+  const [cpassShow, setCPassShow] = useState(false);
+//   const [picMessage, setPicMessage] = useState(null);
+//   const [picture, setPicture] = useState(
+//     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+//   );
+//   const [inpval, setInpval] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//     cpassword: "",
+//     phone: "",
+//     picture: "",
+//   });
 
-const Container = styled("form")`
-  width: 100%;
-  margin: 3% auto 0 auto;
+//   const setval = (e) => {
+   
+//     const { name, value } = e.target;
+//     setInpval(() => {
+//       return {
+//         ...inpval,
+//         [name]: value,
+//       };
+//     });
+//   };
+ 
+//   const adduser = (e) => {
+//     e.preventDefault();
+//     const { name, email, password, cpassword, phone } = inpval;
+//     if (name === "") {
+//       toast.warning("name is required!", {
+//         position: "top-center",
+//       });
+//     } else if (email === "") {
+//       toast.error("email is required!", {
+//         position: "top-center",
+//       });
+//     } else if (!email.includes("@")) {
+//       toast.warning("includes @ in your email!", {
+//         position: "top-center",
+//       });
+//     } else if (password === "") {
+//       toast.error("password is required!", {
+//         position: "top-center",
+//       });
+//     } else if (password.length < 6) {
+//       toast.error("password must be 6 char!", {
+//         position: "top-center",
+//       });
+//       alert("add password more than 6");
+//     } else if (cpassword === "") {
+//       toast.error("cpassword is required!", {
+//         position: "top-center",
+//       });
+//     } else if (cpassword.length < 6) {
+//       toast.error("confirm password must be 6 char!", {
+//         position: "top-center",
+//       });
+//     } else if (password !== cpassword) {
+//       toast.error("pass and Cpass are not matching!", {
+//         position: "top-center",
+//       });
+//     } else if (phone.length < 10) {
+//       toast.error("confirm phone must be 10 numbers!", {
+//         position: "top-center",
+//       });
+//     } else {
+//       console.log("registe succesful");
+//     }
+//   };
+//   const postDetails = (pics) => {
+//     if (!picture) {
+//       return setPicMessage("Please Select an image!.. ");
+//     }
+//     setPicMessage(null);
+//     if (pics.type === "image/jpeg" || pics.type === "image/png") {
+//       const data = new FormData();
+//       data.append("file", pics);
+//       data.append("upload_preset", "shkoq3qc");
+//       data.append("cloud_name", "du3acgzcg");
 
-  & > div {
-    margin-top: 40px;
-  }
-`;
-const ButtonBox = styled(Button)`
-  margin-top: 10%;
-  background-color: #ff7555;
-  color: #111111;
-  width: 20%;
-  // border-radius:5%
-`;
+//       fetch("https://api.cloudinary.com/v1_1/du3acgzcg/image/upload", {
+//         method: "post",
+//         body: data,
+//       })
+//         .then((res) => res.json())
+//         .then((data) => {
+//           console.log(data);
+//           setPicture(data.url.toString());
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//         });
+//     } else {
+//       return setPicMessage("Please Select an Image");
+//     }
+//   };
 
-const SignUp = () => {
-  const [email, setEmail] = useState("");
+// =============================================================================================================
+
+
+
+const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [picture, setPicture] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
@@ -79,9 +127,44 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmpassword) {
-      setMessage("Password Do Not Match");
-    } else {
+    if (name === "") {
+              toast.warning("name is required!", {
+                position: "top-center",
+              });
+            } else if (email === "") {
+              toast.error("email is required!", {
+                position: "top-center",
+              });
+            } else if (!email.includes("@")) {
+              toast.warning("includes @ in your email!", {
+                position: "top-center",
+              });
+            } else if (password === "") {
+              toast.error("password is required!", {
+                position: "top-center",
+              });
+            } else if (password.length < 6) {
+              toast.error("password must be 6 char!", {
+                position: "top-center",
+              });
+              alert("add password more than 6");
+            } else if (confirmpassword === "") {
+              toast.error("cpassword is required!", {
+                position: "top-center",
+              });
+            } else if (confirmpassword.length < 6) {
+              toast.error("confirm password must be 6 char!", {
+                position: "top-center",
+              });
+            } else if (password !== confirmpassword) {
+              toast.error("pass and Cpass are not matching!", {
+                position: "top-center",
+              });
+            } else if (phone.length < 10) {
+              toast.error("confirm phone must be 10 numbers!", {
+                position: "top-center",
+              });
+            } else {
       setMessage(null);
       try {
         const config = {
@@ -132,234 +215,305 @@ const SignUp = () => {
       return setPicMessage("Please Select an Image");
     }
   };
+
+
+
+
+
+
+
+
+
   return (
     <>
-      <Main align="center">
-        <Box1 elevation={4}>
-          <div
-            style={{
-              marginTop: "1px",
-            }}
-          >
-            <img
-              style={{ marginTop: "-80px" }}
-              src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg"
-              alt=""
-            />
-            <h2>On Register You can</h2>
+      <session>
+        <div className="main">
+          <div className="left_session">
             <div
               style={{
-                display: "flex",
+                marginTop: "1px",
               }}
             >
-              <CheckCircleOutlineOutlinedIcon
-                style={{ color: "#18c1a3", marginTop: "-7px" }}
+              <img
+                style={{ marginTop: "-80px", marginLeft: "70px" }}
+                src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg"
+                alt=""
               />
-              <p
+              <h3>On Register You can</h3>
+              <div
                 style={{
-                  color: "#445578",
-                  lineHeight: "18px",
-                  fontSize: "17px",
-                  textAlign: "start",
-                  marginLeft: "10px",
-                  marginTop: "-2%",
+                  display: "flex",
+                  marginTop: "12px",
                 }}
               >
-                Build your profile and let recruiters find you
-              </p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-              }}
-            >
-              <CheckCircleOutlineOutlinedIcon
-                style={{ color: "#18c1a3", marginTop: "-7px" }}
-              />
-              <p
+                <CheckCircleOutlineOutlinedIcon
+                  style={{ color: "#18c1a3", marginTop: "12px" }}
+                />
+                <p
+                  style={{
+                    color: "#445578",
+                    lineHeight: "18px",
+                    fontSize: "17px",
+                    textAlign: "start",
+                    marginLeft: "10px",
+                    marginTop: "5%",
+                  }}
+                >
+                  Build your profile and let recruiters find you
+                </p>
+              </div>
+              <div
                 style={{
-                  color: "#445578",
-                  lineHeight: "18px",
-                  fontSize: "17px",
-                  textAlign: "start",
-                  marginLeft: "10px",
-                  marginTop: "-2%",
+                  display: "flex",
+                  marginTop: "13px",
                 }}
               >
-                Build your profile and let recruiters find you
-              </p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-              }}
-            >
-              <CheckCircleOutlineOutlinedIcon
-                style={{ color: "#18c1a3", marginTop: "-7px" }}
-              />
-              <p
+                <CheckCircleOutlineOutlinedIcon
+                  style={{ color: "#18c1a3", marginTop: "10px" }}
+                />
+                <p
+                  style={{
+                    color: "#445578",
+                    lineHeight: "18px",
+                    fontSize: "17px",
+                    textAlign: "start",
+                    marginLeft: "10px",
+                    marginTop: "5%",
+                  }}
+                >
+                  Get job postings delivered right to your email
+                </p>
+              </div>
+              <div
                 style={{
-                  color: "#445578",
-                  lineHeight: "18px",
-                  fontSize: "17px",
-                  textAlign: "start",
-                  marginLeft: "10px",
-                  marginTop: "-2%",
+                  display: "flex",
+                  marginTop: "13px",
                 }}
               >
-                Build your profile and let recruiters find you
-              </p>
+                <CheckCircleOutlineOutlinedIcon
+                  style={{ color: "#18c1a3", marginTop: "7px" }}
+                />
+                <p
+                  style={{
+                    color: "#445578",
+                    lineHeight: "18px",
+                    fontSize: "17px",
+                    textAlign: "start",
+                    marginLeft: "10px",
+                    marginTop: "5%",
+                  }}
+                >
+                  Find a job and grow your career as well
+                </p>
+              </div>
             </div>
           </div>
-        </Box1>
-        <Box elevation={5}>
-          <Grid>
-            <Header style={{ marginLeft: "1%" }}>
-              Find a job & grow your career
-            </Header>
-          </Grid>
-          {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-          {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
-          {loading && <Loading />}
-          <Container onSubmit={handleSubmit}>
-            <TextField
-              style={{ width: "70%", marginLeft: "-20%" }}
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              type="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-
-            <TextField
-              style={{ width: "70%", marginLeft: "-19%" }}
-              id="outlined-basic"
-              label="Email Id"
-              variant="outlined"
-              helperText="We'll send you relevant jobs in your mail"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              style={{ width: "70%", marginLeft: "-18%" }}
-              id="outlined-basic"
-              label="password"
-              variant="outlined"
-              helperText="Minimum 6 characters required"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <TextField
-              style={{ width: "70%", marginLeft: "-17%" }}
-              id="outlined-basic"
-              label="Conform password"
-              variant="outlined"
-              helperText="Minimum 6 characters required"
-              type="password"
-              value={confirmpassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <TextField
-              style={{ width: "70%", marginLeft: "-17%" }}
-              id="outlined-basic"
-              label="mobileNumber"
-              variant="outlined"
-              helperText="Recruiters will call you on this number "
-              type="number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            {picMessage && (
-              <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
-            )}
-            <Form.Group className="mb-3">
-              <Form.Label style={{ marginLeft: "-33%", fontSize: "20px" }}>
-                Profile Picture{" "}
-              </Form.Label>
-
-              <Form.Control
-                type="file"
-                style={{ width: "35%", size: "xl" }}
-                onChange={(e) => postDetails(e.target.files[0])}
-                id="custom-file"
-              />
-            </Form.Group>
-
-            <div style={{ display: "flex" }}>
-              <Button
-                sx={{
-                  width: 250,
-                  height: 80,
-                  backgroundColor: "primary",
-                  "&:hover": {
-                    backgroundColor: "primary.dark",
-                    opacity: [0.9, 0.8, 0.7],
-                  },
+          <div className="form_data1">
+            <div className="form_heading">
+              <h2
+                style={{
+                  color: "#000000",
+                  fontSize: "30px",
+                  marginLeft: "-40%",
                 }}
               >
-                kalesha
-              </Button>
-
-              <Button
-                sx={{
-                  width: 250,
-                  height: 80,
-                  backgroundColor: "primary",
-                  "&:hover": {
-                    backgroundColor: "primary.dark",
-                    opacity: [0.9, 0.8, 0.7],
-                  },
-                }}
-              >
-                Baig{" "}
-              </Button>
+                Find a job & grow your career
+              </h2>
             </div>
+            <form>
+              <div className="form_input">
+                <label htmlFor="name">Full Name</label>
+                <input
+                  type="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  name="name"
+                  id="name"
+                  placeholder="Enter Your Name "
+                />
+              </div>
+              <div className="form_input">
+                <label htmlFor="email">Email/username</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
+                  id="Email"
+                  placeholder="Enter Your email here "
+                />
+                <FormHelperText
+                  style={{ marginTop: "-10px" }}
+                  id="my-helper-text"
+                >
+                  We'll never share your email.
+                </FormHelperText>
+              </div>
 
-            <FormControlLabel
-              style={{ color: "#445578", marginLeft: "-55%" }}
-              control={<Checkbox defaultChecked />}
-              label="Send me important updates onWhatsApp"
-            />
-            <p
-              style={{
-                color: "#445578",
-                "font-size": "15px",
-                marginLeft: "-25%",
-              }}
-            >
-              By clicking Register, you agree to the Terms and Conditions &
-              Privacy Policy of Naukri.com
-            </p>
-            <ButtonBox
-              type="submit"
-              variant="contained"
-              style={{ width: "15%", marginLeft: "-75%" }}
-            >
-              Signup
-            </ButtonBox>
-          </Container>
-          {/* <div style={{"marginTop":"-100%","marginLeft":"70%"}} >
-          <button style={{"borderRadius":"5%","textDecoration":"none","padding":"10px","width":"100px"}}>Google
+              <div className="form_input">
+                <label htmlFor="password">Password</label>
+                <div className="two">
+                  <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type={!passShow ? "password" : "text"}
+                    name="password"
+                    id="password1"
+                    placeholder="Enter Your password"
+                  />
+                  <div
+                    className="showpass1"
+                    onClick={() => setPassShow(!passShow)}
+                  >
+                    {!passShow ? "Show" : "Hide"}
+                  </div>
+                </div>
+                <FormHelperText
+                  style={{ marginTop: "-10px" }}
+                  id="my-helper-text"
+                >
+                  please Enter password greater than 6 charecters
+                </FormHelperText>
+              </div>
+              <div className="form_input">
+                <label htmlFor="password1">Conform Password</label>
+                <div className="two">
+                  <input
+                   value={confirmpassword}
+                   onChange={(e) => setConfirmPassword(e.target.value)}
+                    type={!cpassShow ? "password" : "text"}
+                    name="cpassword"
+                    id="password"
+                    placeholder="Enter Your password"
+                  />
+                  <div
+                    className="showpass1"
+                    onClick={() => setCPassShow(!cpassShow)}
+                  >
+                    {!cpassShow ? "Show" : "Hide"}
+                  </div>
+                </div>
+                <FormHelperText
+                  style={{ marginTop: "-10px" }}
+                  id="my-helper-text"
+                >
+                  please Enter password greater than 6 charecters
+                </FormHelperText>
+              </div>
+              <div className="form_input">
+                <label htmlFor="number">MobileNumber</label>
+                <input
+                type="number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                  name="phone"
+                  id="number"
+                  placeholder="Enter Your Mobile Number "
+                />
+                <FormHelperText
+                  style={{ marginTop: "-10px" }}
+                  id="my-helper-text"
+                >
+                  Recruiters will call you on this number
+                </FormHelperText>
+              </div>
+              <div className="experience">
+                <h3>Work</h3>
+                <div className="work_container">
+                  <CoPresentIcon
+                    style={{
+                      marginTop: "15px",
+                      marginLeft: "10px",
+                    }}
+                  />
+                  <h3
+                    style={{
+                      fontSize: "15px",
+                      color: "#457eff",
+                      marginLeft: "40px",
+                      marginTop: "-25px",
+                    }}
+                  >
+                    I'm Experienced
+                  </h3>
+                  <p style={{ color: "#8292b4", fontSize: "13px" }}>
+                    I have work experience (excluding internships)
+                  </p>
+                </div>
+                <div className="work_container">
+                  <BadgeIcon
+                    style={{
+                      marginTop: "15px",
+                      marginLeft: "10px",
+                    }}
+                  />
+                  <h3
+                    style={{
+                      fontSize: "15px",
+                      color: "#457eff",
+                      marginLeft: "40px",
+                      marginTop: "-25px",
+                    }}
+                  >
+                    I'm Fresher
+                  </h3>
+                  <p style={{ color: "#8292b4", fontSize: "13px" }}>
+                    I am a student/ Haven't worked after graduation
+                  </p>
+                </div>
+              </div>
+              <div>
+                <Form.Group className="mb-3">
+                  <Form.Label style={{ marginLeft: "-0.5%", fontSize: "20px" }}>
+                    Profile Picture{" "}
+                  </Form.Label>
 
-          <img style={{"marginTop":"-500%","marginLeft":"-20px","width":"50%"}} src="https://static.naukimg.com/s/7/104/assets/images/google-icon.9273ac87.svg" alt="" />
-          </button>
-        </div> */}
-        </Box>
-      </Main>
-      <div>
-        <p style={{ color: "#8292b4", marginLeft: "40%" }}>
-          About Us | Contact Us | FAQ | Terms And Conditions | Report A Problem
-          | Privacy Policy{" "}
-        </p>
-        <p style={{ color: "#8292b4", marginLeft: "50%" }}>
-          All Rights Are Reserverd @ 2022 Info Edge India LTD.
-        </p>
-      </div>
+                  <Form.Control
+                    type="file"
+                    name="picture"
+                    style={{ width: "35%", size: "xl", marginTop: "10px" }}
+                    onChange={(e) => postDetails(e.target.files[0])}
+                    id="custom-file"
+                  />
+                  <FormHelperText
+                    style={{ marginTop: "10px", color: "#445578" }}
+                    id="my-helper-text"
+                  >
+                    Recruiters give first preference to candidates who have a
+                    profile picture
+                  </FormHelperText>
+                </Form.Group>
+              </div>
+              <div>
+                <Checkbox style={{ marginLeft: "-2%", marginTop: "2%" }} />
+                <p
+                  style={{
+                    color: "#445578",
+                    fontSize: "14px",
+                    marginLeft: "20px",
+                    marginTop: "-4%",
+                  }}
+                >
+                  {" "}
+                  Send Important Information On WhatsApp
+                </p>
+              </div>
+              <p
+                style={{ color: "#445578", fontSize: "12px", marginTop: "2%" }}
+              >
+                By clicking Register, you agree to the Terms and Conditions &
+                Privacy Policy of JobPanda.com
+              </p>
+              <button onClick={handleSubmit} className="btn3">
+                Register Now
+              </button>
+            </form>
+            <ToastContainer />
+          </div>
+        </div>
+      </session>
     </>
   );
 };
 
-export default SignUp;
+export default Signup;
