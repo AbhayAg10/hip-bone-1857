@@ -9,8 +9,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className='App'>
-        {/* <Navbar /> */}
-        {/* <AllRoutes /> */}
+        <Navbar />
+        <AllRoutes />
         <Footer />
       </div>
     </Provider>

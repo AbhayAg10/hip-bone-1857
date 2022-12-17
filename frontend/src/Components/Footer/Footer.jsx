@@ -1,17 +1,24 @@
 import { Box, Center, Container, Divider, Flex, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import mainlogo from '../../Components/req/jobpandacom-logo.png'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, FreeMode } from "swiper";
 
 const Footer = () => {
   return (
     <>
+      <Divider orientation={"horizontal"} w={"100%"} borderColor={"gray.300"} />
       <Container
         h={"425px"}
         pt={"80px"}
         pb={"60px"}
         maxW={"100%"}
-        border={"1px"}
-        borderColor={"black"}
+        // border={"1px"}
+        // borderColor={"black"}
       >
         <Flex
           h={"160px"}
@@ -272,8 +279,8 @@ const Footer = () => {
           h={"45px"}
           px={"148px"}
           maxW={"100%"}
-          border={"1px"}
-          borderColor={"black"}
+          // border={"1px"}
+          // borderColor={"black"}
         >
           <Flex
             mr={'30px'}
@@ -318,10 +325,49 @@ const Footer = () => {
           <Box
             w={'534px'}
             h={'100%'}
-            border={'1px'}
-            borderColour={'green'}
+            cursor={'pointer'}
+            // border={'1px'}
+            // borderColour={'green'}
           >
-
+            <Swiper
+              slidesPerView={3}
+              spaceBetween={0}
+              freeMode={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              modules={[Autoplay,FreeMode]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/nnacres.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/jeevansathi.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/ng.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/firstNaukri.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/shiksha.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/iimjobs.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/hirist.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/jobhai.png' />
+              </SwiperSlide>
+              <SwiperSlide>
+                <Image src='https://static.naukimg.com/s/0/0/i/new-homepage/footer-logos/techminis.png' />
+              </SwiperSlide>
+            </Swiper>
           </Box>
         </Flex>
       </Container>

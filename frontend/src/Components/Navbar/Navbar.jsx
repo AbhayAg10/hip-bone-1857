@@ -17,6 +17,7 @@ const Navbar = () => {
       // border={"1px"}
       // borderColor={"black"}
       position={"fixed"}
+      bgColor={"white"}
     >
       <Flex
         direction={"row"}
