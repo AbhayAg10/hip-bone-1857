@@ -36,7 +36,6 @@ const Login = () => {
         position: "top-center",
       });
     } else {
-     
       try {
         const config = {
           headers: {
@@ -59,13 +58,13 @@ const Login = () => {
         toast.success("User Login Successfuly", {
           position: "top-center",
         });
-  
+
         setLoading(false);
       } catch (error) {
         setError(error.response.data.message);
-        const FError=error.response.data.message
-        console.log(FError)
-        toast.success(FError, {
+        const FError = error.response.data.message;
+        console.log(FError);
+        toast.error(FError, {
           position: "top-center",
         });
         setLoading(false);

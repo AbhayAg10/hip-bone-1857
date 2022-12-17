@@ -12,107 +12,105 @@ import "./Both.css";
 const Signup = () => {
   const [passShow, setPassShow] = useState(false);
   const [cpassShow, setCPassShow] = useState(false);
-//   const [picMessage, setPicMessage] = useState(null);
-//   const [picture, setPicture] = useState(
-//     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-//   );
-//   const [inpval, setInpval] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//     cpassword: "",
-//     phone: "",
-//     picture: "",
-//   });
+  //   const [picMessage, setPicMessage] = useState(null);
+  //   const [picture, setPicture] = useState(
+  //     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+  //   );
+  //   const [inpval, setInpval] = useState({
+  //     name: "",
+  //     email: "",
+  //     password: "",
+  //     cpassword: "",
+  //     phone: "",
+  //     picture: "",
+  //   });
 
-//   const setval = (e) => {
-   
-//     const { name, value } = e.target;
-//     setInpval(() => {
-//       return {
-//         ...inpval,
-//         [name]: value,
-//       };
-//     });
-//   };
- 
-//   const adduser = (e) => {
-//     e.preventDefault();
-//     const { name, email, password, cpassword, phone } = inpval;
-//     if (name === "") {
-//       toast.warning("name is required!", {
-//         position: "top-center",
-//       });
-//     } else if (email === "") {
-//       toast.error("email is required!", {
-//         position: "top-center",
-//       });
-//     } else if (!email.includes("@")) {
-//       toast.warning("includes @ in your email!", {
-//         position: "top-center",
-//       });
-//     } else if (password === "") {
-//       toast.error("password is required!", {
-//         position: "top-center",
-//       });
-//     } else if (password.length < 6) {
-//       toast.error("password must be 6 char!", {
-//         position: "top-center",
-//       });
-//       alert("add password more than 6");
-//     } else if (cpassword === "") {
-//       toast.error("cpassword is required!", {
-//         position: "top-center",
-//       });
-//     } else if (cpassword.length < 6) {
-//       toast.error("confirm password must be 6 char!", {
-//         position: "top-center",
-//       });
-//     } else if (password !== cpassword) {
-//       toast.error("pass and Cpass are not matching!", {
-//         position: "top-center",
-//       });
-//     } else if (phone.length < 10) {
-//       toast.error("confirm phone must be 10 numbers!", {
-//         position: "top-center",
-//       });
-//     } else {
-//       console.log("registe succesful");
-//     }
-//   };
-//   const postDetails = (pics) => {
-//     if (!picture) {
-//       return setPicMessage("Please Select an image!.. ");
-//     }
-//     setPicMessage(null);
-//     if (pics.type === "image/jpeg" || pics.type === "image/png") {
-//       const data = new FormData();
-//       data.append("file", pics);
-//       data.append("upload_preset", "shkoq3qc");
-//       data.append("cloud_name", "du3acgzcg");
+  //   const setval = (e) => {
 
-//       fetch("https://api.cloudinary.com/v1_1/du3acgzcg/image/upload", {
-//         method: "post",
-//         body: data,
-//       })
-//         .then((res) => res.json())
-//         .then((data) => {
-//           console.log(data);
-//           setPicture(data.url.toString());
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     } else {
-//       return setPicMessage("Please Select an Image");
-//     }
-//   };
+  //     const { name, value } = e.target;
+  //     setInpval(() => {
+  //       return {
+  //         ...inpval,
+  //         [name]: value,
+  //       };
+  //     });
+  //   };
 
-// =============================================================================================================
+  //   const adduser = (e) => {
+  //     e.preventDefault();
+  //     const { name, email, password, cpassword, phone } = inpval;
+  //     if (name === "") {
+  //       toast.warning("name is required!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (email === "") {
+  //       toast.error("email is required!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (!email.includes("@")) {
+  //       toast.warning("includes @ in your email!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (password === "") {
+  //       toast.error("password is required!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (password.length < 6) {
+  //       toast.error("password must be 6 char!", {
+  //         position: "top-center",
+  //       });
+  //       alert("add password more than 6");
+  //     } else if (cpassword === "") {
+  //       toast.error("cpassword is required!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (cpassword.length < 6) {
+  //       toast.error("confirm password must be 6 char!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (password !== cpassword) {
+  //       toast.error("pass and Cpass are not matching!", {
+  //         position: "top-center",
+  //       });
+  //     } else if (phone.length < 10) {
+  //       toast.error("confirm phone must be 10 numbers!", {
+  //         position: "top-center",
+  //       });
+  //     } else {
+  //       console.log("registe succesful");
+  //     }
+  //   };
+  //   const postDetails = (pics) => {
+  //     if (!picture) {
+  //       return setPicMessage("Please Select an image!.. ");
+  //     }
+  //     setPicMessage(null);
+  //     if (pics.type === "image/jpeg" || pics.type === "image/png") {
+  //       const data = new FormData();
+  //       data.append("file", pics);
+  //       data.append("upload_preset", "shkoq3qc");
+  //       data.append("cloud_name", "du3acgzcg");
 
+  //       fetch("https://api.cloudinary.com/v1_1/du3acgzcg/image/upload", {
+  //         method: "post",
+  //         body: data,
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+  //           setPicture(data.url.toString());
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     } else {
+  //       return setPicMessage("Please Select an Image");
+  //     }
+  //   };
 
+  // =============================================================================================================
 
-const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [picture, setPicture] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
@@ -128,43 +126,43 @@ const [email, setEmail] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name === "") {
-              toast.warning("name is required!", {
-                position: "top-center",
-              });
-            } else if (email === "") {
-              toast.error("email is required!", {
-                position: "top-center",
-              });
-            } else if (!email.includes("@")) {
-              toast.warning("includes @ in your email!", {
-                position: "top-center",
-              });
-            } else if (password === "") {
-              toast.error("password is required!", {
-                position: "top-center",
-              });
-            } else if (password.length < 6) {
-              toast.error("password must be 6 char!", {
-                position: "top-center",
-              });
-              alert("add password more than 6");
-            } else if (confirmpassword === "") {
-              toast.error("cpassword is required!", {
-                position: "top-center",
-              });
-            } else if (confirmpassword.length < 6) {
-              toast.error("confirm password must be 6 char!", {
-                position: "top-center",
-              });
-            } else if (password !== confirmpassword) {
-              toast.error("pass and Cpass are not matching!", {
-                position: "top-center",
-              });
-            } else if (phone.length < 10) {
-              toast.error("confirm phone must be 10 numbers!", {
-                position: "top-center",
-              });
-            } else {
+      toast.warning("name is required!", {
+        position: "top-center",
+      });
+    } else if (email === "") {
+      toast.error("email is required!", {
+        position: "top-center",
+      });
+    } else if (!email.includes("@")) {
+      toast.warning("includes @ in your email!", {
+        position: "top-center",
+      });
+    } else if (password === "") {
+      toast.error("password is required!", {
+        position: "top-center",
+      });
+    } else if (password.length < 6) {
+      toast.error("password must be 6 char!", {
+        position: "top-center",
+      });
+      alert("add password more than 6");
+    } else if (confirmpassword === "") {
+      toast.error("confirmPassword is required!", {
+        position: "top-center",
+      });
+    } else if (confirmpassword.length < 6) {
+      toast.error("confirm password must be 6 char!", {
+        position: "top-center",
+      });
+    } else if (password !== confirmpassword) {
+      toast.error("pass and conformPass are not matching!", {
+        position: "top-center",
+      });
+    } else if (phone.length < 10) {
+      toast.error("confirm phone must be 10 numbers!", {
+        position: "top-center",
+      });
+    } else {
       setMessage(null);
       try {
         const config = {
@@ -181,9 +179,17 @@ const [email, setEmail] = useState("");
         );
         console.log(data);
         localStorage.setItem("userInfo", JSON.stringify(data));
+        toast.success("User Registered Successfuly ....", {
+          position: "top-center",
+        });
         setLoading(false);
       } catch (error) {
         setError(error.response.data.message);
+        const FError = error.response.data.message;
+        console.log(FError);
+        toast.success(FError, {
+          position: "top-center",
+        });
         setLoading(false);
       }
     }
@@ -215,14 +221,6 @@ const [email, setEmail] = useState("");
       return setPicMessage("Please Select an Image");
     }
   };
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -379,8 +377,8 @@ const [email, setEmail] = useState("");
                 <label htmlFor="password1">Conform Password</label>
                 <div className="two">
                   <input
-                   value={confirmpassword}
-                   onChange={(e) => setConfirmPassword(e.target.value)}
+                    value={confirmpassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     type={!cpassShow ? "password" : "text"}
                     name="cpassword"
                     id="password"
@@ -403,9 +401,9 @@ const [email, setEmail] = useState("");
               <div className="form_input">
                 <label htmlFor="number">MobileNumber</label>
                 <input
-                type="number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                  type="number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   name="phone"
                   id="number"
                   placeholder="Enter Your Mobile Number "
