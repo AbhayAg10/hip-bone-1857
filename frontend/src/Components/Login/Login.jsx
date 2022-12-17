@@ -3,9 +3,120 @@ import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import DoneIcon from "@mui/icons-material/Done";
 import "./Both.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 const Login = () => {
   const [passShow, setPassShow] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // useEffect(()=>{
+  //   const userInfo=localStorage.getItem("userInfo",JSON.stringify(data))
+  // },[])
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (email === "") {
+      toast.error("email is required!", {
+        position: "top-center",
+      });
+    } else if (!email.includes("@")) {
+      toast.warning("includes @ in your email!", {
+        position: "top-center",
+      });
+    } else if (password === "") {
+      toast.error("password is required!", {
+        position: "top-center",
+      });
+    } else if (password.length < 6) {
+      toast.error("password must be 6 char!", {
+        position: "top-center",
+      });
+    } else {
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+        setLoading(true);
+
+        const { data } = await axios.post(
+          "http://localhost:8084/api/users/login",
+          {
+            email,
+            password,
+          },
+          config
+        );
+        console.log(data);
+        localStorage.setItem("userInfo", JSON.stringify(data));
+        console.log("user login succesfully done");
+        toast.success("User Login Successfuly", {
+          position: "top-center",
+        });
+
+        setLoading(false);
+      } catch (error) {
+        setError(error.response.data.message);
+        const FError = error.response.data.message;
+        console.log(FError);
+        toast.error(FError, {
+          position: "top-center",
+        });
+        setLoading(false);
+      }
+    }
+  };
+  // const [inpval, setInpval] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+  // console.log(inpval)
+  // const setval = (e) => {
+
+  //   // console.log(e.target.value);
+  //   const { name, value } = e.target;
+  //   setInpval(() => {
+  //     return {
+  //       ...inpval,
+  //       [name]: value,
+  //     };
+  //   });
+  // };
+  // // ============loginUser==============
+
+  // const loginUser=(e)=>{
+  //   e.preventDefault();
+  //   const {email,password}=inpval;
+
+  //   if (email === "") {
+  //     toast.error("email is required!", {
+  //         position: "top-center"
+  //     });
+
+  // } else if (!email.includes("@")) {
+  //     toast.warning("includes @ in your email!", {
+  //         position: "top-center"
+  //     });
+
+  // } else if (password === "") {
+  //     toast.error("password is required!", {
+  //         position: "top-center"
+  //     });
+
+  // } else if (password.length < 6) {
+  //     toast.error("password must be 6 char!", {
+  //         position: "top-center"
+  //     });
+
+  // } else {
+  //     console.log("user login succesfully done");
+  //   }
+  // }
   return (
     <div>
       <section className="login_section">
@@ -53,7 +164,9 @@ const Login = () => {
               <div className="form_input">
                 <label htmlFor="email">Email/username</label>
                 <input
-                  type="text"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   id="email"
                   placeholder="Enter Your email here "
@@ -64,6 +177,8 @@ const Login = () => {
                 <div className="two">
                   <input
                     type={!passShow ? "password" : "text"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     name="password"
                     id="password"
                     placeholder="Enter Your password"
@@ -76,7 +191,9 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <button className="btn">Login</button>
+              <button className="btn" onClick={submitHandler}>
+                Login
+              </button>
               <button className="btn1">Login With OTP </button>
               <div>
                 <hr
@@ -97,6 +214,7 @@ const Login = () => {
                 </button>
               </div>
             </form>
+            <ToastContainer />
           </div>
         </div>
       </section>
