@@ -2,10 +2,12 @@ import React from 'react'
 import {Box, Button, Container, Divider, Flex, Heading, Image, Menu, MenuButton, MenuItem, MenuList, Stack, Text, textDecoration, useDisclosure} from '@chakra-ui/react';
 import mainlogo from '../../Components/req/jobpandacom-logo.png'
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
+
   const {isOpen, onOpen, onClose} = useDisclosure()
   const employers = useDisclosure()
   const jobs = useDisclosure()
@@ -152,6 +154,7 @@ const Navbar = () => {
           >
             <Menu isOpen={companies.isOpen}>
             <MenuButton
+            onClick={()=>navigate('/companies')}
               _hover={{
                 background: "white",
                 border: "none"
