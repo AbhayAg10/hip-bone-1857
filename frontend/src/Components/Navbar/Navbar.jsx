@@ -20,6 +20,7 @@ const Navbar = () => {
       // borderColor={"black"}
       position={"fixed"}
       bgColor={"white"}
+      mb='150px'
     >
       <Flex
         direction={"row"}
