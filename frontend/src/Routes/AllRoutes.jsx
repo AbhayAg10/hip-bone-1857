@@ -5,6 +5,8 @@ import CompanyProfile from "../Components/Companies/CompanyProfile";
 import HomePage from "../Components/Homepage/HomePage";
 import JobDetail from "../Components/Jobs/JobDetail";
 import JobPage from "../Components/Jobs/JobPage";
+import ServicesPage from "../Components/Services/ServicesPage";
+
 
 const AllRoutes = () => {
   return (
@@ -15,12 +17,9 @@ const AllRoutes = () => {
       <Route path='/companies/:id' element={<CompanyProfile />} />
       {/* Don't Touch it Ends*/}
 
-      <Route path='/jobpage' element={<JobPage />}>
-        JobPage
-      </Route>
-      <Route path='/jobpage/:jobId' element={<JobDetail />}>
-        JobPage
-      </Route>
+      <Route path='/jobpage' element={<JobPage />} />
+      <Route path='/jobpage/:jobId' element={<JobDetail />} />
+      <Route path='/services' element={<ServicesPage />} />
     </Routes>
   );
 };

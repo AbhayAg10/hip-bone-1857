@@ -1,11 +1,12 @@
 import React from 'react';
-import { Flex, Text, Link, Image } from '@chakra-ui/react';
+import { Flex, Text, Image } from '@chakra-ui/react';
 import { BiDotsVerticalRounded } from 'react-icons/bi'
+import { Link } from 'react-router-dom';
 
 const ServicesNavbar = () => {
     return <Flex top='0' position='sticky' w='100%' h={['10vh', '10vh', '10vh', '10vh']} justifyContent='space-around' alignItems='center' bgColor='white'>
         <Flex>
-            <Link>
+            <Link to='/'>
                 <Image alt='logo' src='https://static.naukimg.com/s/7/123/i/FF-Logo.8e75327b.png' w='8rem' />
             </Link>
         </Flex>
