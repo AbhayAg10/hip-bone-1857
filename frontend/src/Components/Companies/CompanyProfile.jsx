@@ -40,14 +40,14 @@ const CompanyProfile = () => {
 
   if (!data) {
     return (
-      <Center h={"80vh"} direction='row' spacing={4}>
+      <Center h={"100vh"} direction='row' spacing={4}>
         <Spinner color='blue.500' size='xl' />
       </Center>
     );
   } else {
     return (
       <Center h={"full"} w={"80vw"} margin={"auto"}>
-        <VStack my={"12"}>
+        <VStack my={"24"}>
           <SlideFade in={true} offsetY={20}>
             <HStack gap={6}>
               <SlideFade in={true} offsetY={-40}>
