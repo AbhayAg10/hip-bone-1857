@@ -18,3 +18,16 @@ export const getCompanies = () => (dispatch) => {
     });
   });
 };
+
+export const getCompaniesByIndustry = (industry) => (dispatch) => {
+  dispatch(getCompaniesRequest());
+
+  return axios
+    .get("http://localhost:8084/api/companies?industry=" + industry)
+    .then((res) => {
+      dispatch({
+        type: types.GET_COMPANIES_SUCCESS,
+        payload: res.data,
+      });
+    });
+};

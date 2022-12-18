@@ -16,10 +16,16 @@ import {
 import React from "react";
 import { BiFilterAlt } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
+import { getCompaniesByIndustry } from "../../redux/companyReducer/action";
 
 const FiltersContainer = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.data);
+
+  const handleCheckBox = (e) => {
+    console.log(e);
+    dispatch(getCompaniesByIndustry(e));
+  };
 
   console.log(data);
 
@@ -40,7 +46,7 @@ const FiltersContainer = () => {
             </AccordionButton>
           </Heading>
           <AccordionPanel pb={4}>
-            <CheckboxGroup>
+            <CheckboxGroup onChange={handleCheckBox}>
               <VStack align={"flex-start"}>
                 <Checkbox value='Foreign MNC'>Foreign MNC</Checkbox>
                 <Checkbox value='Startup'>Startup</Checkbox>

@@ -19,25 +19,21 @@ const getCompanies = asyncHandler(async (req, res) => {
     "Foreign MNC",
     "SaaS",
   ];
-
   let page = parseInt(req.query.page) || 1;
   let show = parseInt(req.query.show) || 10;
   let sort = req.query.sort || "rating";
   let industry = req.query.industry || "all";
 
-  // console.log(req.query.industry);
-
   industry === "all"
     ? (industry = [...industries])
-    : (industry = req.query.industry);
+    : (industry = req.query.industry?.split(" "));
   req.query.sort ? (sort = req.query.sort) : (sort = [sort]);
 
   const companies = await Company.find({})
     .where("industry")
-    .in([...industry])
-    .limit(show)
-    .skip((page - 1) * show)
-    .exec();
+    .in([...industry]);
+  // .limit(show)
+  // .skip((page - 1) * show);
 
   const total = await Company.countDocuments({
     industry: { $in: [...industry] },
