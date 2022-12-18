@@ -328,6 +328,7 @@ const Navbar = () => {
             h={"40px"}
             w={"80px"}
             fontWeight={"600"}
+            onClick={()=>navigate("/login")}
           >
             Login
           </Button>
@@ -338,6 +339,7 @@ const Navbar = () => {
             borderColor={"#ff7555"}
             bgColor={"#ff7555"}
             w={"100px"}
+            onClick={()=>navigate("/signup")}
           >
             Register
           </Button>
