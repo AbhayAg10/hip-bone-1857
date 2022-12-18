@@ -10,8 +10,8 @@ const Companies = () => (
         Top companies hiring now
       </Heading>
     </SlideFade>
-    <HStack>
-      {/* <FiltersContainer /> */}
+    <HStack align={"flex-start"} w={"90vw"}>
+      <FiltersContainer />
       <CompaniesContainer />
     </HStack>
   </VStack>

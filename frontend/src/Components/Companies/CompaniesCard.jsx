@@ -61,6 +61,7 @@ const CompaniesCard = ({ logo, name, rating, reviewsCount, industry, _id }) => {
             <Wrap mt={"4"}>
               {industry.map((industryItem, index) => (
                 <WrapItem
+                  key={index}
                   borderColor={"gray.200"}
                   borderWidth={"1px"}
                   borderRadius={"md"}

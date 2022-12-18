@@ -21,7 +21,7 @@ const getCompanies = asyncHandler(async (req, res) => {
   ];
 
   let page = parseInt(req.query.page) || 1;
-  let show = parseInt(req.query.show) || 2;
+  let show = parseInt(req.query.show) || 10;
   let sort = req.query.sort || "rating";
   let industry = req.query.industry || "all";
 
