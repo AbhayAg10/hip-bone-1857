@@ -2,7 +2,7 @@ import React from 'react'
 import {Box, Button, Container, Divider, Flex, Heading, Image, Menu, MenuButton, MenuItem, MenuList, Stack, Text, textDecoration, useDisclosure} from '@chakra-ui/react';
 import mainlogo from '../../Components/req/jobpandacom-logo.png'
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -15,13 +15,17 @@ const Navbar = () => {
   const services = useDisclosure()
 
   return (
-    <Container
+    <Box
+      as={Container}
+      zIndex={'3'}
+      top={'0'}
       maxW={"100%"}
       h={"72px"}
       // border={"1px"}
       // borderColor={"black"}
       position={"fixed"}
       bgColor={"white"}
+      mb='150px'
     >
       <Flex
         direction={"row"}
@@ -42,6 +46,7 @@ const Navbar = () => {
           justifyContent={"center"} 
           cursor={"pointer"}
         >
+          <Link to='/' >
           <Image 
             w={"90%"}
             src={mainlogo} 
@@ -49,6 +54,7 @@ const Navbar = () => {
             alignItems={"center"}
             cursor={"pointer"} 
           />
+          </Link>
         </Box>
         <Stack
           direction={"row"}
@@ -85,7 +91,7 @@ const Navbar = () => {
               onMouseLeave={jobs.onClose}
               color={"#445578"}
             >
-              Jobs 
+              <Link to="/jobpage" >Jobs</Link> 
             </MenuButton>
             <MenuList onMouseEnter={jobs.onOpen} onMouseLeave={jobs.onClose}>
               <MenuItem
@@ -378,7 +384,7 @@ const Navbar = () => {
           </Menu>
         </Stack>
       </Flex>
-    </Container>
+    </Box>
   )
 }
 
