@@ -5,6 +5,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import "./Both.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useNavigate} from "react-router-dom"
 import axios from "axios";
 const Login = () => {
   const [passShow, setPassShow] = useState(false);
@@ -12,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate=useNavigate()
 
   // useEffect(()=>{
   //   const userInfo=localStorage.getItem("userInfo",JSON.stringify(data))
@@ -58,6 +60,7 @@ const Login = () => {
         toast.success("User Login Successfuly", {
           position: "top-center",
         });
+        navigate("/mainhome")
 
         setLoading(false);
       } catch (error) {
@@ -71,52 +74,7 @@ const Login = () => {
       }
     }
   };
-  // const [inpval, setInpval] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-  // console.log(inpval)
-  // const setval = (e) => {
 
-  //   // console.log(e.target.value);
-  //   const { name, value } = e.target;
-  //   setInpval(() => {
-  //     return {
-  //       ...inpval,
-  //       [name]: value,
-  //     };
-  //   });
-  // };
-  // // ============loginUser==============
-
-  // const loginUser=(e)=>{
-  //   e.preventDefault();
-  //   const {email,password}=inpval;
-
-  //   if (email === "") {
-  //     toast.error("email is required!", {
-  //         position: "top-center"
-  //     });
-
-  // } else if (!email.includes("@")) {
-  //     toast.warning("includes @ in your email!", {
-  //         position: "top-center"
-  //     });
-
-  // } else if (password === "") {
-  //     toast.error("password is required!", {
-  //         position: "top-center"
-  //     });
-
-  // } else if (password.length < 6) {
-  //     toast.error("password must be 6 char!", {
-  //         position: "top-center"
-  //     });
-
-  // } else {
-  //     console.log("user login succesfully done");
-  //   }
-  // }
   return (
     <div>
       <section className="login_section">
