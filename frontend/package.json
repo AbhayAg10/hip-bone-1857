@@ -28,10 +28,7 @@
     "react-slick": "^0.29.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
-<<<<<<< HEAD
-=======
     "slick-carousel": "^1.8.1",
->>>>>>> 72708b85379408c98bf1620c87f677a17eccf643
     "swiper": "^8.4.5",
     "web-vitals": "^2.1.4"
   },
