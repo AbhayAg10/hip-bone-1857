@@ -27,7 +27,7 @@ const CompanyProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8084/api/companies/${id}`)
+      .get(`https://rich-puce-peacock-kilt.cyclic.app/api/companies/${id}`)
       .then((response) => {
         const data = response.data;
         setData(data);
