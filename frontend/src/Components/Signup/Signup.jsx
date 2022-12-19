@@ -8,105 +8,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 import "./Both.css";
 const Signup = () => {
   const [passShow, setPassShow] = useState(false);
   const [cpassShow, setCPassShow] = useState(false);
-  //   const [picMessage, setPicMessage] = useState(null);
-  //   const [picture, setPicture] = useState(
-  //     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-  //   );
-  //   const [inpval, setInpval] = useState({
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     cpassword: "",
-  //     phone: "",
-  //     picture: "",
-  //   });
-
-  //   const setval = (e) => {
-
-  //     const { name, value } = e.target;
-  //     setInpval(() => {
-  //       return {
-  //         ...inpval,
-  //         [name]: value,
-  //       };
-  //     });
-  //   };
-
-  //   const adduser = (e) => {
-  //     e.preventDefault();
-  //     const { name, email, password, cpassword, phone } = inpval;
-  //     if (name === "") {
-  //       toast.warning("name is required!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (email === "") {
-  //       toast.error("email is required!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (!email.includes("@")) {
-  //       toast.warning("includes @ in your email!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (password === "") {
-  //       toast.error("password is required!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (password.length < 6) {
-  //       toast.error("password must be 6 char!", {
-  //         position: "top-center",
-  //       });
-  //       alert("add password more than 6");
-  //     } else if (cpassword === "") {
-  //       toast.error("cpassword is required!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (cpassword.length < 6) {
-  //       toast.error("confirm password must be 6 char!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (password !== cpassword) {
-  //       toast.error("pass and Cpass are not matching!", {
-  //         position: "top-center",
-  //       });
-  //     } else if (phone.length < 10) {
-  //       toast.error("confirm phone must be 10 numbers!", {
-  //         position: "top-center",
-  //       });
-  //     } else {
-  //       console.log("registe succesful");
-  //     }
-  //   };
-  //   const postDetails = (pics) => {
-  //     if (!picture) {
-  //       return setPicMessage("Please Select an image!.. ");
-  //     }
-  //     setPicMessage(null);
-  //     if (pics.type === "image/jpeg" || pics.type === "image/png") {
-  //       const data = new FormData();
-  //       data.append("file", pics);
-  //       data.append("upload_preset", "shkoq3qc");
-  //       data.append("cloud_name", "du3acgzcg");
-
-  //       fetch("https://api.cloudinary.com/v1_1/du3acgzcg/image/upload", {
-  //         method: "post",
-  //         body: data,
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //           setPicture(data.url.toString());
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     } else {
-  //       return setPicMessage("Please Select an Image");
-  //     }
-  //   };
+  const navigate = useNavigate();
 
   // =============================================================================================================
 
@@ -115,6 +22,10 @@ const Signup = () => {
   const [picture, setPicture] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
+  const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -169,7 +80,7 @@ const Signup = () => {
         setLoading(true);
 
         const { data } = await axios.post(
-          "http://localhost:8084/api/users",
+          "https://rich-puce-peacock-kilt.cyclic.app/api/users",
           { name, email, password, phone, picture },
           config
         );
@@ -178,6 +89,7 @@ const Signup = () => {
         toast.success("User Registered Successfuly ....", {
           position: "top-center",
         });
+
         setLoading(false);
       } catch (error) {
         setError(error.response.data.message);
@@ -315,8 +227,8 @@ const Signup = () => {
               </h2>
             </div>
             <form>
-              <div className="form_input">
-                <label htmlFor="name">Full Name</label>
+              <div className="form_input_name">
+                <label htmlFor="name">Please Enter Full Name</label>
                 <input
                   type="name"
                   value={name}
@@ -326,6 +238,7 @@ const Signup = () => {
                   placeholder="Enter Your Name "
                 />
               </div>
+              
               <div className="form_input">
                 <label htmlFor="email">Email/username</label>
                 <input
@@ -336,12 +249,7 @@ const Signup = () => {
                   id="Email"
                   placeholder="Enter Your email here "
                 />
-                <FormHelperText
-                  style={{ marginTop: "-10px" }}
-                  id="my-helper-text"
-                >
-                  We'll never share your email.
-                </FormHelperText>
+                
               </div>
 
               <div className="form_input">
@@ -362,12 +270,7 @@ const Signup = () => {
                     {!passShow ? "Show" : "Hide"}
                   </div>
                 </div>
-                <FormHelperText
-                  style={{ marginTop: "-10px" }}
-                  id="my-helper-text"
-                >
-                  please Enter password greater than 6 charecters
-                </FormHelperText>
+               
               </div>
               <div className="form_input">
                 <label htmlFor="password1">Conform Password</label>
@@ -387,12 +290,7 @@ const Signup = () => {
                     {!cpassShow ? "Show" : "Hide"}
                   </div>
                 </div>
-                <FormHelperText
-                  style={{ marginTop: "-10px" }}
-                  id="my-helper-text"
-                >
-                  please Enter password greater than 6 charecters
-                </FormHelperText>
+               
               </div>
               <div className="form_input">
                 <label htmlFor="number">MobileNumber</label>
@@ -404,12 +302,7 @@ const Signup = () => {
                   id="number"
                   placeholder="Enter Your Mobile Number "
                 />
-                <FormHelperText
-                  style={{ marginTop: "-10px" }}
-                  id="my-helper-text"
-                >
-                  Recruiters will call you on this number
-                </FormHelperText>
+              
               </div>
               <div className="experience">
                 <h3>Work</h3>
@@ -469,17 +362,12 @@ const Signup = () => {
                     onChange={(e) => postDetails(e.target.files[0])}
                     id="custom-file"
                   />
-                  <FormHelperText
-                    style={{ marginTop: "10px", color: "#445578" }}
-                    id="my-helper-text"
-                  >
-                    Recruiters give first preference to candidates who have a
-                    profile picture
-                  </FormHelperText>
+                
                 </Form.Group>
               </div>
               <div>
-                <Checkbox style={{ marginLeft: "-2%", marginTop: "2%" }} />
+                {/* <Checkbox style={{ marginLeft: "-2%", marginTop: "2%" }} /> */}
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
                 <p
                   style={{
                     color: "#445578",
