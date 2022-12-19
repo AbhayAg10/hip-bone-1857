@@ -3,21 +3,52 @@ const asyncHandler = require("express-async-handler");
 const Company = require("../models/companies.model");
 
 const getCompanies = asyncHandler(async (req, res) => {
-  // console.log(req.query)
-  // if(req.query){
+  let industries = [
+    "Pharmaceutical & Life Sciences",
+    "Public",
+    "Corporate",
+    "B2C",
+    "B2B",
+    "Printing & Publishing",
+    "Advertising / PR / Events",
+    "Private",
+    "Indian MNC",
+    "Conglomerate",
+    "IT Services & Consulting",
+    "Internet",
+    "Foreign MNC",
+    "SaaS",
+  ];
+  let page = parseInt(req.query.page) || 1;
+  let show = parseInt(req.query.show) || 10;
+  let sort = req.query.sort || "rating";
+  let industry = req.query.industry || "all";
 
-  //   // const companies = await Company.find().where();
-  //   res.status(200).json(companies);
-  // }else{
+  industry === "all"
+    ? (industry = [...industries])
+    : (industry = req.query.industry?.split(" "));
+  req.query.sort ? (sort = req.query.sort) : (sort = [sort]);
 
-    const page = parseInt(req.query.page) || 1;
-    const show = parseInt(req.query.show) || 10;
-    const companies = await Company.find({})
-      .limit(show)
-      .skip((page - 1) * show)
-      .exec();
-      res.status(200).json(companies);
-  // }
+  const companies = await Company.find({})
+    .where("industry")
+    .in([...industry]);
+  // .limit(show)
+  // .skip((page - 1) * show);
+
+  const total = await Company.countDocuments({
+    industry: { $in: [...industry] },
+  });
+
+  const response = {
+    error: null,
+    total,
+    page: page,
+    show,
+    industry: industries,
+    companies,
+  };
+
+  res.status(200).json(response);
 });
 
 const getCompany = asyncHandler(async (req, res) => {

@@ -72,6 +72,7 @@ const CompanyProfile = () => {
                       py={1}
                       fontSize={"sm"}
                       opacity={0.8}
+                      key={index}
                     >
                       {industryItem}
                     </WrapItem>
