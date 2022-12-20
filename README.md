@@ -22,9 +22,6 @@ jobpanda.vercel.app/
 ![App ScreenShot](https://i.imgur.com/g9AQqFn.png)
 
 
--Signup Page
-![App ScreenShot](https://i.imgur.com/6H75fKw.png)
-
 -Job Page
 ![App Screenshot](https://i.imgur.com/EyHVY4O.png)
 
